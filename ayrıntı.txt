@@ -1,0 +1,8 @@
+ Ad-Soyad:			Mehmet Sağlam
+Adres:			Kocaeli
+Telefon:			5051234567
+Eposta:			msaglam@hotmail.com
+Dogum Tarihi:			1990
+YabanciDil:		 
+EhliyetBilgisi:		B
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ElemanController">
+   <children>
+      <Label fx:id="lblSistemdekiKisi" layoutX="18.0" layoutY="14.0" text="Sistemdeki Kişi : " />
+      <Label layoutX="26.0" layoutY="61.0" text="Ad : " />
+      <Label layoutX="26.0" layoutY="89.0" text="Adres: " />
+      <Label layoutX="24.0" layoutY="195.0" text="Telefon : " />
+      <Label layoutX="23.0" layoutY="224.0" text="E-Posta : " />
+      <Label layoutX="413.0" layoutY="123.0" text="Yabancı Dil : " />
+      <Label layoutX="412.0" layoutY="187.0" text="Ehliyet Bilgisi" />
+      <ListView fx:id="deneyimListesi" layoutX="437.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="egitimListesi" layoutX="129.0" layoutY="318.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="ad" layoutX="111.0" layoutY="57.0" />
+      <TextArea fx:id="adres" layoutX="108.0" layoutY="94.0" maxHeight="75.0" prefHeight="75.0" prefWidth="200.0" />
+      <TextField fx:id="telefon" layoutX="111.0" layoutY="183.0" />
+      <TextField fx:id="eposta" layoutX="111.0" layoutY="220.0" />
+      <TextField fx:id="yabanciDil" layoutX="403.0" layoutY="157.0" prefHeight="25.0" prefWidth="156.0" />
+      <TextField fx:id="ehliyetBilgisi" layoutX="404.0" layoutY="208.0" prefHeight="35.0" prefWidth="200.0" />
+      <Label layoutX="345.0" layoutY="315.0" text="Deneyimler :" />
+      <Label layoutX="15.0" layoutY="329.0" text="Eğitim Bilgileri :" />
+      <Button layoutX="335.0" layoutY="356.0" mnemonicParsing="false" onAction="#DeneyimEkle" text="Deneyim Ekle" />
+      <Button layoutX="338.0" layoutY="426.0" mnemonicParsing="false" onAction="#DeneyimSil" text="Deneyimi Sil" />
+      <Button layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#EgitimBilgisiEkle" text="Eğitim Bilgisi Ekle" />
+      <Button layoutX="14.0" layoutY="438.0" mnemonicParsing="false" onAction="#EgitimBilgisiniSil" text="Eğitim Bilgisini Sil" />
+      <Button layoutX="794.0" layoutY="37.0" mnemonicParsing="false" onAction="#KarsilamaEkraninaDon" text="Geri Dön" />
+      <Button layoutX="694.0" layoutY="434.0" mnemonicParsing="false" onAction="#SistemeKaydet" prefHeight="84.0" prefWidth="131.0" text="Tüm Bilgileri Güncelle" />
+      <Label layoutX="413.0" layoutY="53.0" text="Dogum Tarihi" />
+      <TextField fx:id="dogumTarihi" layoutX="399.0" layoutY="87.0" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" />
+   </padding>
+</AnchorPane>
