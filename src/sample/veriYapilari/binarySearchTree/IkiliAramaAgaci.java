@@ -67,7 +67,6 @@ public class IkiliAramaAgaci {
     public int seviyeyiGetir(ikiliAramaAgaciDugum ikiliAramaAgaciDugum, String ad) {
         return seviyeBul(ikiliAramaAgaciDugum, ad, 0);
     }
-
     public void kisiEkle(Kisi kisi, LinkedList deneyimler, LinkedList egitimDurumu) {
         ikiliAramaAgaciDugum ebeveyn = new ikiliAramaAgaciDugum();
         ikiliAramaAgaciDugum arama = root;
@@ -127,21 +126,6 @@ public class IkiliAramaAgaci {
             guncelle(ikiliAramaAgaciDugum.sol, kisininIsmi, yeniBilgiler);
         else
             guncelle(ikiliAramaAgaciDugum.sag, kisininIsmi, yeniBilgiler);
-    }
-
-    public ikiliAramaAgaciDugum kisiAra(String kisininIsmi) {
-        return aramaYap(root, kisininIsmi);
-    }
-
-    private ikiliAramaAgaciDugum aramaYap(ikiliAramaAgaciDugum ikiliAramaAgaciDugum, String kisininIsmi) {
-        if (ikiliAramaAgaciDugum == null)
-            return null;
-        else if (kisininIsmi.compareTo(ikiliAramaAgaciDugum.kisi.Ad_Soyad) == 0)
-            return ikiliAramaAgaciDugum;
-        else if (kisininIsmi.compareTo(ikiliAramaAgaciDugum.kisi.Ad_Soyad) < 0)
-            return aramaYap(ikiliAramaAgaciDugum.sol, kisininIsmi);
-        else
-            return aramaYap(ikiliAramaAgaciDugum.sag, kisininIsmi);
     }
 
     private ikiliAramaAgaciDugum Successor(ikiliAramaAgaciDugum ikiliAramaAgaciDugum) {
@@ -264,8 +248,32 @@ public class IkiliAramaAgaci {
         duzey++;
     }
 
-   /* public ObservableList<String> ingilizceBilenler() {
-        ObservableList<String> ingilizceBilenler = FXCollections.observableArrayList();
-        return  ingilizceBilenler;
-    }*/
+    public ikiliAramaAgaciDugum kisiAra(String kisininIsmi) {
+        return aramaYap(root, kisininIsmi);
+    }
+
+    private ikiliAramaAgaciDugum aramaYap(ikiliAramaAgaciDugum ikiliAramaAgaciDugum, String kisininIsmi) {
+        if (ikiliAramaAgaciDugum == null)
+            return null;
+        else if (kisininIsmi.compareTo(ikiliAramaAgaciDugum.kisi.Ad_Soyad) == 0)
+            return ikiliAramaAgaciDugum;
+        else if (kisininIsmi.compareTo(ikiliAramaAgaciDugum.kisi.Ad_Soyad) < 0)
+            return aramaYap(ikiliAramaAgaciDugum.sol, kisininIsmi);
+        else
+            return aramaYap(ikiliAramaAgaciDugum.sag, kisininIsmi);
+    }
+    public ikiliAramaAgaciDugum ehliyetAra(String ehliyetTipi) {
+        return ehliyetTipi(root, ehliyetTipi);
+    }
+    private ikiliAramaAgaciDugum ehliyetTipi(ikiliAramaAgaciDugum ikiliAramaAgaciDugum, String ehliyetTipi) {
+        if (ikiliAramaAgaciDugum == null)
+            return null;
+        else if (ehliyetTipi.compareTo(ikiliAramaAgaciDugum.kisi.ehliyetBilgisi) == 0)
+            return ikiliAramaAgaciDugum;
+        else if (ehliyetTipi.compareTo(ikiliAramaAgaciDugum.kisi.ehliyetBilgisi) < 0)
+            return aramaYap(ikiliAramaAgaciDugum.sol, ehliyetTipi);
+        else
+            return aramaYap(ikiliAramaAgaciDugum.sag, ehliyetTipi);
+    }
+
 }
