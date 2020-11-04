@@ -132,6 +132,7 @@ public class IkiliAramaAgaci {
     public ikiliAramaAgaciDugum kisiAra(String kisininIsmi) {
         return aramaYap(root, kisininIsmi);
     }
+
     private ikiliAramaAgaciDugum aramaYap(ikiliAramaAgaciDugum ikiliAramaAgaciDugum, String kisininIsmi) {
         if (ikiliAramaAgaciDugum == null)
             return null;

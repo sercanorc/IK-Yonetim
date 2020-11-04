@@ -153,9 +153,8 @@ public class SirketController implements Initializable {
     }
 
     public void Ara(){
-      /*  String ad= elemanİsim.getText();
-
-        System.out.println(sistemdekiSirket.Basvuranlar.adaGoreKisiAra(ad));*/
+        String ad= elemanİsim.getText();
+        System.out.println(sistemdekiSirket.Basvuranlar.kisiAra(ad));
     }
 
     public void dosyayaYazdır(){

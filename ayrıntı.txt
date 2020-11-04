@@ -1,8 +1,18 @@
- Ad-Soyad:			Selim Mert
-Adres:			İstanbul
-Telefon:			5061234567
-Eposta:			smert@gmail.com
-Dogum Tarihi:			1985
-YabanciDil:		 
-EhliyetBilgisi:		B
+ Ad-Soyad:			Aslı Yel
+Adres:			Trabzon
+Telefon:			5421234567
+Eposta:			ayel@yahoo.com
+Dogum Tarihi:			1970
+YabanciDil:		İngilizce
+EhliyetBilgisi:		 A
+
+Deneyimler;
+
+asdsf - sdf
+
+
+Eğitim Bilgileri;
+
+2022 - sd - asd - 70.0
+
 
