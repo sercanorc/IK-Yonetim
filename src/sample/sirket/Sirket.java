@@ -6,13 +6,11 @@ import sample.veriYapilari.binarySearchTree.IkiliAramaAgaci;
 //yaratılırken otomatik olarak üretilmektedir.
 public class Sirket {
     public String Ad;
-    public IkiliAramaAgaci Basvuranlar;
 
     public  Sirket(){
     }
 
     public Sirket(String ad){
-        Basvuranlar=new IkiliAramaAgaci();
         this.Ad = ad;
     }
 

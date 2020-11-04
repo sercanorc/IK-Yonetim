@@ -263,4 +263,9 @@ public class IkiliAramaAgaci {
         ziyaret(ikiliAramaAgaciDugum);
         duzey++;
     }
+
+   /* public ObservableList<String> ingilizceBilenler() {
+        ObservableList<String> ingilizceBilenler = FXCollections.observableArrayList();
+        return  ingilizceBilenler;
+    }*/
 }

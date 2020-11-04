@@ -144,7 +144,7 @@ public class SirketController implements Initializable {
     }
 
     public void ingilizceBilenleriListele() {
-      //  listBasvurular.setItems(sistemdekiSirket.Basvuranlar.ingilizceBilenler());
+      //  listBasvurular.setItems(ElemanController.Kisiler.ingilizceBilenler());
     }
 
     public void lisansMezunlarıListele(){
@@ -154,7 +154,7 @@ public class SirketController implements Initializable {
 
     public void Ara(){
         String ad= elemanİsim.getText();
-        System.out.println(sistemdekiSirket.Basvuranlar.kisiAra(ad));
+        System.out.println(ElemanController.Kisiler.kisiAra(ad).kisi.bilgileriGetir());
     }
 
     public void dosyayaYazdır(){
