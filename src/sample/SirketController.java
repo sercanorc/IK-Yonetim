@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-
+    //Şirket kayıtt ve kontrollerinden sorumlu sınıf elemanların listelenmesi ve kontrolleri bu sınıf ile yönetilir
 public class SirketController implements Initializable {
     public static Hashtable Sirketler;
     public static Sirket sistemdekiSirket;
@@ -45,7 +45,7 @@ public class SirketController implements Initializable {
     public String ayrintilar = " ";
 
 
-    @Override
+    @Override   //Sistemde şirket vara bilgilerini getirir
     public void initialize(URL location, ResourceBundle resources) {
         if (sistemdekiSirket != null) {
             isYeriAdi.setText(sistemdekiSirket.Ad);
@@ -86,10 +86,12 @@ public class SirketController implements Initializable {
         }
     }
 
+    //Tüm kisileri listeler
     public void BasvurulariListele() {
         listBasvurular.setItems(ElemanController.Kisiler.inorder());
     }
 
+    //Listesinden seçilen kişinin ayrıntılı bilgisini gösterir
     public void AyrintilariGoster() {
         if (listBasvurular.getSelectionModel().getSelectedItem() != null) {
             String[] kisiBilgileri = listBasvurular.getSelectionModel().getSelectedItem().toString().split(" \\| ");
@@ -116,6 +118,7 @@ public class SirketController implements Initializable {
         }
     }
 
+    // İkili arama ağacının derinliğini ve eleman sayısını bulup konsola yazar.
     public void derinlikveElemanSayisi() {
         Integer elemanSayisi = 0;
         Integer derinlik = 0;
@@ -127,25 +130,25 @@ public class SirketController implements Initializable {
             System.out.println("hata");
         }
     }
-
+    //Root-Sol-Sağ
     public void Preorder() {
         listBasvurular.setItems(ElemanController.Kisiler.preorder());
     }
-
+    //Sol-Root-Sağ
     public void Inorder() {
         listBasvurular.setItems(ElemanController.Kisiler.inorder());
     }
-
+    //Sol-Sağ-Root
     public void Postorder() {
         listBasvurular.setItems(ElemanController.Kisiler.postorder());
     }
 
     public void ingilizceBilenleriListele() {
-        listBasvurular.setItems(sistemdekiSirket.Basvuranlar.ingilizceBilenler());
-    }
-    public void lisansMezunlarıListele(){
+      //  listBasvurular.setItems(sistemdekiSirket.Basvuranlar.ingilizceBilenler());
     }
 
+    public void lisansMezunlarıListele(){
+    }
     public void deneyimsizKisiler() {
     }
 
@@ -156,7 +159,7 @@ public class SirketController implements Initializable {
     }
 
     public void dosyayaYazdır(){
-        File file = new File("ayrıntı.txt");//proje içinde text.txt adında bir txt oluşturun.
+        File file = new File("ayrıntı.txt");
         try(BufferedWriter br = new BufferedWriter(new FileWriter(file))){
             if(ayrintilar==" "){
                 System.out.println("Yazılacak birşey yok");

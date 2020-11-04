@@ -23,7 +23,7 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+    //Eleman kayıdı ve kontrollerinden sorumlu sınıftır
 public class ElemanController implements Initializable {
     @FXML
     private TextField ad;
@@ -56,7 +56,7 @@ public class ElemanController implements Initializable {
     private LinkedList egitimBilgileri = new LinkedList();//kayıt edilen kisini egitim bilgileri
     public ObservableList<String> lEgitim = null;
 
-    @Override
+    @Override   //Ekran yüklenirken sistemde kişi var ise bilgilerini getiri
     public void initialize(URL location, ResourceBundle resources) {
         if (SistemdekiKisi == null) {
             deneyimListesi.setItems(lDeneyimler);
@@ -92,6 +92,47 @@ public class ElemanController implements Initializable {
             }
         }
     }
+
+    // Sistemde kişi yoksa eleman ekleme işlemini varsa güncelleme işlemini gerçekleştirir.
+    public void SistemeKaydet() throws Exception {
+            if (ad.getText().isEmpty() != true &&
+                    adres.getText().isEmpty() != true &&
+                    telefon.getText().isEmpty() != true &&
+                    eposta.getText().isEmpty() != true &&
+                    dogumTarihi.getText().isEmpty() != true &&
+                    yabanciDil.getText().isEmpty() != true
+            ) {
+
+                if (SistemdekiKisi != null) {
+                    Kisiler.kisiSil(SistemdekiKisi.kisi.Ad_Soyad);
+                    String kisiAd = SistemdekiKisi.kisi.Ad_Soyad;
+                    SistemdekiKisi.kisi = null;
+                    SistemdekiKisi.kisi = new Kisi(ad.getText(), adres.getText(),
+                            telefon.getText(), eposta.getText(),dogumTarihi.getText(), yabanciDil.getText(),ehliyetBilgisi.getText()
+                    );
+
+                    Kisiler.kisiEkle(SistemdekiKisi.kisi,SistemdekiKisi.Deneyimler,SistemdekiKisi.EgitimDurumu);
+                } else {
+                    yeniKisi = new Kisi(ad.getText(), adres.getText(),
+                            telefon.getText(), eposta.getText(),dogumTarihi.getText(), yabanciDil.getText(),ehliyetBilgisi.getText()
+                    );
+
+                    if (Kisiler == null || Kisiler.dugumSayisi() == 0) {
+                        ikiliAramaAgaciDugum d = new ikiliAramaAgaciDugum(yeniKisi);
+                        Kisiler = new IkiliAramaAgaci(d, deneyimleri, egitimBilgileri);
+                    } else {
+                        Kisiler.kisiEkle(yeniKisi, deneyimleri, egitimBilgileri);
+                    }
+                }
+                KarsilamaEkraninaDon();
+            } else {
+                if (SistemdekiKisi == null) {
+                    System.out.println("Kayıt hatası");
+                } else {
+                    System.out.println("Güncelleme hatası");
+                }
+            }
+        }
 
     public void KarsilamaEkraninaDon() throws Exception {
         arayuz = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
@@ -284,44 +325,5 @@ public class ElemanController implements Initializable {
         });
     }
 
-    public void SistemeKaydet() throws Exception {
-        if (ad.getText().isEmpty() != true &&
-                adres.getText().isEmpty() != true &&
-                telefon.getText().isEmpty() != true &&
-                eposta.getText().isEmpty() != true &&
-                dogumTarihi.getText().isEmpty() != true &&
-                yabanciDil.getText().isEmpty() != true
-        ) {
-
-            if (SistemdekiKisi != null) {
-                Kisiler.kisiSil(SistemdekiKisi.kisi.Ad_Soyad);
-                String kisiAd = SistemdekiKisi.kisi.Ad_Soyad;
-                SistemdekiKisi.kisi = null;
-                SistemdekiKisi.kisi = new Kisi(ad.getText(), adres.getText(),
-                        telefon.getText(), eposta.getText(),dogumTarihi.getText(), yabanciDil.getText(),ehliyetBilgisi.getText()
-                        );
-
-                Kisiler.kisiEkle(SistemdekiKisi.kisi,SistemdekiKisi.Deneyimler,SistemdekiKisi.EgitimDurumu);
-            } else {
-                yeniKisi = new Kisi(ad.getText(), adres.getText(),
-                        telefon.getText(), eposta.getText(),dogumTarihi.getText(), yabanciDil.getText(),ehliyetBilgisi.getText()
-                        );
-
-                if (Kisiler == null || Kisiler.dugumSayisi() == 0) {
-                    ikiliAramaAgaciDugum d = new ikiliAramaAgaciDugum(yeniKisi);
-                    Kisiler = new IkiliAramaAgaci(d, deneyimleri, egitimBilgileri);
-                } else {
-                    Kisiler.kisiEkle(yeniKisi, deneyimleri, egitimBilgileri);
-                }
-            }
-            KarsilamaEkraninaDon();
-        } else {
-            if (SistemdekiKisi == null) {
-                System.out.println("Kayıt hatası");
-            } else {
-                System.out.println("Güncelleme hatası");
-            }
-        }
-    }
 
 }

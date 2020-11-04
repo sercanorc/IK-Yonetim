@@ -1,8 +1,8 @@
- Ad-Soyad:			Mehmet Sağlam
-Adres:			Kocaeli
-Telefon:			5051234567
-Eposta:			msaglam@hotmail.com
-Dogum Tarihi:			1990
+ Ad-Soyad:			Selim Mert
+Adres:			İstanbul
+Telefon:			5061234567
+Eposta:			smert@gmail.com
+Dogum Tarihi:			1985
 YabanciDil:		 
 EhliyetBilgisi:		B
 

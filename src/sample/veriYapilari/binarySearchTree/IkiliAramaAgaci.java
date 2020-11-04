@@ -9,7 +9,6 @@ public class IkiliAramaAgaci {
     public ObservableList<String> dugumler;
     private ikiliAramaAgaciDugum root;
     private int duzey = 0;
-
     public IkiliAramaAgaci() { }
 
     public IkiliAramaAgaci(ikiliAramaAgaciDugum kok) {

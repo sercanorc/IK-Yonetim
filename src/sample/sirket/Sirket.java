@@ -1,22 +1,17 @@
 package sample.sirket;
 
-import sample.veriYapilari.heap.Heap;
-
+import sample.veriYapilari.binarySearchTree.IkiliAramaAgaci;
+//Şirket sınıfı içerisinde öbek veri yapısını kullanarak kişilerin bilgilerini tutmaktadır.
+//Constructor(kurucu) metodun içerisinde sınıftan nesne
+//yaratılırken otomatik olarak üretilmektedir.
 public class Sirket {
     public String Ad;
-    public Heap Basvuranlar;
 
     public  Sirket(){
-        Basvuranlar= new Heap();
     }
 
     public Sirket(String ad){
-        Basvuranlar= new Heap();
         this.Ad = ad;
     }
 
-    public Sirket(String ad, String adres, String telefon, String eposta){
-        Basvuranlar= new Heap();
-        this.Ad = ad;
-    }
 }

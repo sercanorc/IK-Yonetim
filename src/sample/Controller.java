@@ -19,7 +19,8 @@ import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
-
+    // Program açıldığın karşılama ekranıdır sistemdeki kişilerin ve şirketlerin listelenmesi,yönlendirmelerin yapılması
+    // gibi işlevler bu sınıf aracılığıyla  gerçekleştirilmektedir.
 public class Controller implements Initializable {
     @FXML
     public ListView<String> kisiler;
@@ -30,7 +31,7 @@ public class Controller implements Initializable {
 
     private Parent arayuz;
 
-    @Override
+    @Override   //Ekran yüklenirken kişi ağacını ve şirket hash tablosununu oluşturmayı sağlar
     public void initialize(URL location, ResourceBundle resources) {
         try {
             kisiAgaci();
@@ -94,9 +95,7 @@ public class Controller implements Initializable {
             int i = 0;
             while ((satir = okuyucu.readLine()) != null) {
                 String[] eklenecekSirketinBilgileri = satir.split(", ");
-                eklenecekSirket = new Sirket(eklenecekSirketinBilgileri[0],
-                        eklenecekSirketinBilgileri[1], eklenecekSirketinBilgileri[2],
-                        eklenecekSirketinBilgileri[3]);
+                eklenecekSirket = new Sirket(eklenecekSirketinBilgileri[0]);
                 if (i == 0) {
                     SirketController.Sirketler = new Hashtable();
                     SirketController.Sirketler.put(eklenecekSirket.Ad,eklenecekSirket);
@@ -108,6 +107,7 @@ public class Controller implements Initializable {
         }
     }
 
+    //Listeden seçilen elemanın sisteme giriş yapmasını sağlar.
     public void Eleman() {
         try{
             if (kisiler.getSelectionModel().getSelectedItem() != null) {
@@ -123,7 +123,7 @@ public class Controller implements Initializable {
         }
 
     }
-
+    //Listeden seçilen sirketın sisteme giriş yapmasını sağlar.
     public void Sirket() {
         try {
             if (sirketler.getSelectionModel().getSelectedItem() != null) {
