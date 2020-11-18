@@ -10,9 +10,9 @@
    <children>
       <Button layoutX="11.0" layoutY="71.0" mnemonicParsing="false" onAction="#Eleman" text="Eleman Girişi" />
       <Button layoutX="15.0" layoutY="318.0" mnemonicParsing="false" onAction="#Sirket" text="Şirket Girişi" />
-      <ListView fx:id="kisiler" layoutX="151.0" layoutY="34.0" onContextMenuRequested="#Eleman" />
+      <ListView fx:id="kisilerList" layoutX="151.0" layoutY="34.0" onContextMenuRequested="#Eleman" />
       <Label alignment="CENTER" layoutX="151.0" layoutY="14.0" text="Kişiler:" />
-      <ListView fx:id="sirketler" layoutX="417.0" layoutY="34.0" onContextMenuRequested="#Sirket" />
+      <ListView fx:id="sirketlerList" layoutX="417.0" layoutY="34.0" onContextMenuRequested="#Sirket" />
       <Label alignment="CENTER" layoutX="417.0" layoutY="14.0" text="Şirketler:" />
       <Button layoutX="10.0" layoutY="112.0" mnemonicParsing="false" onAction="#ElemanKaydi" text="Eleman Kaydı" />
       <Button layoutX="14.0" layoutY="276.0" mnemonicParsing="false" onAction="#SirketKaydi" text="Şirket Kaydı" />

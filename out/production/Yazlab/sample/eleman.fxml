@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ElemanController">
    <children>
-      <Label fx:id="lblSistemdekiKisi" layoutX="18.0" layoutY="14.0" text="Sistemdeki Kişi : " />
+      <Label fx:id="lblDKisi" layoutX="18.0" layoutY="14.0" text="Sistemdeki Kişi : " />
       <Label layoutX="26.0" layoutY="61.0" text="Ad : " />
       <Label layoutX="26.0" layoutY="89.0" text="Adres: " />
       <Label layoutX="24.0" layoutY="195.0" text="Telefon : " />
@@ -29,10 +29,10 @@
       <Label layoutX="15.0" layoutY="329.0" text="Eğitim Bilgileri :" />
       <Button layoutX="335.0" layoutY="356.0" mnemonicParsing="false" onAction="#DeneyimEkle" text="Deneyim Ekle" />
       <Button layoutX="338.0" layoutY="426.0" mnemonicParsing="false" onAction="#DeneyimSil" text="Deneyimi Sil" />
-      <Button layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#EgitimBilgisiEkle" text="Eğitim Bilgisi Ekle" />
-      <Button layoutX="14.0" layoutY="438.0" mnemonicParsing="false" onAction="#EgitimBilgisiniSil" text="Eğitim Bilgisini Sil" />
-      <Button layoutX="794.0" layoutY="37.0" mnemonicParsing="false" onAction="#KarsilamaEkraninaDon" text="Geri Dön" />
-      <Button layoutX="694.0" layoutY="434.0" mnemonicParsing="false" onAction="#SistemeKaydet" prefHeight="84.0" prefWidth="131.0" text="Tüm Bilgileri Güncelle" />
+      <Button layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#EgitimEkle" text="Eğitim Bilgisi Ekle" />
+      <Button layoutX="14.0" layoutY="438.0" mnemonicParsing="false" onAction="#EgitimSil" text="Eğitim Bilgisini Sil" />
+      <Button layoutX="794.0" layoutY="37.0" mnemonicParsing="false" onAction="#AnaSayfa" text="Geri Dön" />
+      <Button layoutX="694.0" layoutY="434.0" mnemonicParsing="false" onAction="#Kayit" prefHeight="84.0" prefWidth="131.0" text="Tüm Bilgileri Güncelle" />
       <Label layoutX="413.0" layoutY="53.0" text="Dogum Tarihi" />
       <TextField fx:id="dogumTarihi" layoutX="399.0" layoutY="87.0" />
    </children>

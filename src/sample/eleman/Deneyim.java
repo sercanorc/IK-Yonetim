@@ -1,6 +1,6 @@
 package sample.eleman;
 
-public class Deneyim extends EkBilgi {
+public class Deneyim extends Bilgi {
     public String Deneyim;
     public String Adres;
     public String Tecrübe_Pozisyon;

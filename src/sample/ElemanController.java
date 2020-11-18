@@ -16,11 +16,10 @@ import sample.eleman.Deneyim;
 import sample.eleman.Egitim;
 import sample.eleman.Kisi;
 import sample.veriYapilari.LinkedList.LinkedList;
-import sample.veriYapilari.binarySearchTree.IkiliAramaAgaci;
-import sample.veriYapilari.binarySearchTree.ikiliAramaAgaciDugum;
+import sample.veriYapilari.binarySearchTree.AramaAgaci;
+import sample.veriYapilari.binarySearchTree.AramaAgaciDugum;
 
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.Optional;
 import java.util.ResourceBundle;
     //Eleman kayıdı ve kontrollerinden sorumlu sınıftır
@@ -44,89 +43,91 @@ public class ElemanController implements Initializable {
     @FXML
     private ListView egitimListesi;
     @FXML
-    private Label lblSistemdekiKisi;
+    private Label lblDKisi;
 
-    public static IkiliAramaAgaci Kisiler;
-    public static ikiliAramaAgaciDugum SistemdekiKisi;
+    public static AramaAgaci Kisiler;
+    public static AramaAgaciDugum DKisi;
 
-    private Parent arayuz;
+    private Parent guı;
     private Kisi yeniKisi; // kayıt edeilecek kisi
     private LinkedList deneyimleri = new LinkedList(); //kayıt edilen kisini Deneyimleri
-    public ObservableList<String> lDeneyimler = null;
+    public ObservableList<String> deneyimlerListesi = null;
     private LinkedList egitimBilgileri = new LinkedList();//kayıt edilen kisini egitim bilgileri
-    public ObservableList<String> lEgitim = null;
+    public ObservableList<String> egitimlerListesi = null;
 
     @Override   //Ekran yüklenirken sistemde kişi var ise bilgilerini getiri
     public void initialize(URL location, ResourceBundle resources) {
-        if (SistemdekiKisi == null) {
-            deneyimListesi.setItems(lDeneyimler);
-            egitimListesi.setItems(lEgitim);
+        if (DKisi == null) {
+            deneyimListesi.setItems(deneyimlerListesi);
+            egitimListesi.setItems(egitimlerListesi);
         } else {
-            lblSistemdekiKisi.setText("Sistemdeki Kişi : " + SistemdekiKisi.kisi.bilgileriGetir());
-            ad.setText(SistemdekiKisi.kisi.Ad_Soyad);
-            adres.setText(SistemdekiKisi.kisi.Adres);
-            telefon.setText(SistemdekiKisi.kisi.Telefon);
-            eposta.setText(SistemdekiKisi.kisi.Eposta);
-            dogumTarihi.setText(SistemdekiKisi.kisi.DogumTarihi);
-            yabanciDil.setText(SistemdekiKisi.kisi.YabanciDil);
-            ehliyetBilgisi.setText(SistemdekiKisi.kisi.ehliyetBilgisi);
+            lblDKisi.setText("Sistemdeki Kişi : " + DKisi.kisi.bilgileriGetir());
+            ad.setText(DKisi.kisi.Ad_Soyad);
+            adres.setText(DKisi.kisi.Adres);
+            telefon.setText(DKisi.kisi.Telefon);
+            eposta.setText(DKisi.kisi.Eposta);
+            dogumTarihi.setText(DKisi.kisi.DogumTarihi);
+            yabanciDil.setText(DKisi.kisi.YabanciDil);
+            ehliyetBilgisi.setText(DKisi.kisi.ehliyetBilgisi);
 
-            if (SistemdekiKisi.Deneyimler != null) {
-                for (int i = SistemdekiKisi.Deneyimler.Boyut; i > 0; i--) {
-                    if (lDeneyimler != null)
-                        lDeneyimler.add(SistemdekiKisi.Deneyimler.DisplayElements(i));
+            if (DKisi.Deneyim != null) {
+                for (int i = DKisi.Deneyim.Boyut; i > 0; i--) {
+                    if (deneyimlerListesi != null)
+                        deneyimlerListesi.add(DKisi.Deneyim.DisplayElements(i));
                     else
-                        lDeneyimler = FXCollections.observableArrayList(SistemdekiKisi.Deneyimler.DisplayElements(i));
+                        deneyimlerListesi = FXCollections.observableArrayList(DKisi.Deneyim.DisplayElements(i));
                 }
-                deneyimListesi.setItems(lDeneyimler);
+                deneyimListesi.setItems(deneyimlerListesi);
             }
 
-            if (SistemdekiKisi.EgitimDurumu != null) {
-                for (int i = SistemdekiKisi.EgitimDurumu.Boyut; i > 0; i--) {
-                    if (lEgitim != null)
-                        lEgitim.add(SistemdekiKisi.EgitimDurumu.DisplayElements(i));
+            if (DKisi.Egitim != null) {
+                for (int i = DKisi.Egitim.Boyut; i > 0; i--) {
+                    if (egitimlerListesi != null)
+                        egitimlerListesi.add(DKisi.Egitim.DisplayElements(i));
                     else
-                        lEgitim = FXCollections.observableArrayList(SistemdekiKisi.EgitimDurumu.DisplayElements(i));
+                        egitimlerListesi = FXCollections.observableArrayList(DKisi.Egitim.DisplayElements(i));
                 }
-                egitimListesi.setItems(lEgitim);
+                egitimListesi.setItems(egitimlerListesi);
             }
         }
     }
 
     // Sistemde kişi yoksa eleman ekleme işlemini varsa güncelleme işlemini gerçekleştirir.
-    public void SistemeKaydet() throws Exception {
+    public void Kayit() throws Exception {
             if (ad.getText().isEmpty() != true &&
                     adres.getText().isEmpty() != true &&
                     telefon.getText().isEmpty() != true &&
                     eposta.getText().isEmpty() != true &&
                     dogumTarihi.getText().isEmpty() != true &&
-                    yabanciDil.getText().isEmpty() != true
+                    yabanciDil.getText().isEmpty() != true &&
+                    ehliyetBilgisi.getText().isEmpty() !=true
+
             ) {
 
-                if (SistemdekiKisi != null) {
-                    Kisiler.kisiSil(SistemdekiKisi.kisi.Ad_Soyad);
-                    String kisiAd = SistemdekiKisi.kisi.Ad_Soyad;
-                    SistemdekiKisi.kisi = null;
-                    SistemdekiKisi.kisi = new Kisi(ad.getText(), adres.getText(),
+                if (DKisi != null) {
+                    Kisiler.kisiSil(DKisi.kisi.Ad_Soyad);
+                    String kisiAd = DKisi.kisi.Ad_Soyad;
+                    DKisi.kisi = null;
+                    DKisi.kisi = new Kisi(ad.getText(), adres.getText(),
                             telefon.getText(), eposta.getText(),dogumTarihi.getText(), yabanciDil.getText(),ehliyetBilgisi.getText()
                     );
 
-                    Kisiler.kisiEkle(SistemdekiKisi.kisi,SistemdekiKisi.Deneyimler,SistemdekiKisi.EgitimDurumu);
+                    Kisiler.kisiEkle(DKisi.kisi,DKisi.Deneyim,DKisi.Egitim);
                 } else {
                     yeniKisi = new Kisi(ad.getText(), adres.getText(),
                             telefon.getText(), eposta.getText(),dogumTarihi.getText(), yabanciDil.getText(),ehliyetBilgisi.getText()
                     );
 
                     if (Kisiler == null || Kisiler.dugumSayisi() == 0) {
-                        ikiliAramaAgaciDugum d = new ikiliAramaAgaciDugum(yeniKisi);
-                        Kisiler = new IkiliAramaAgaci(d, deneyimleri, egitimBilgileri);
+                        AramaAgaciDugum d = new AramaAgaciDugum(yeniKisi);
+                        Kisiler = new AramaAgaci(d, deneyimleri, egitimBilgileri);
                     } else {
                         Kisiler.kisiEkle(yeniKisi, deneyimleri, egitimBilgileri);
                     }
                 }
-                KarsilamaEkraninaDon();
+                AnaSayfa();
             } else {
-                if (SistemdekiKisi == null) {
+                if (DKisi == null) {
                     System.out.println("Kayıt hatası");
                 } else {
                     System.out.println("Güncelleme hatası");
@@ -134,34 +135,33 @@ public class ElemanController implements Initializable {
             }
         }
 
-    public void KarsilamaEkraninaDon() throws Exception {
-        arayuz = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
-        Main.pencere.setScene(new Scene(arayuz));
-        System.out.println("Karşılama Ekranına Geri Dönüldü.");
+    public void AnaSayfa() throws Exception {
+        guı = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
+        Main.windows.setScene(new Scene(guı));;
 
-        if (SistemdekiKisi != null) {
-            SistemdekiKisi = null;
-            lDeneyimler = null;
-            lEgitim = null;
+        if (DKisi != null) {
+            DKisi = null;
+            deneyimlerListesi = null;
+            egitimlerListesi = null;
         }
     }
 
-    public void EgitimBilgisiniSil() {
+    public void EgitimSil() {
         if (egitimListesi.getSelectionModel().getSelectedIndex() != -1) {
             int secili = egitimListesi.getSelectionModel().getSelectedIndex();
 
-            if (SistemdekiKisi != null)
-                SistemdekiKisi.EgitimDurumu.DeletePos(secili + 1);
+            if (DKisi != null)
+                DKisi.Egitim.DeletePos(secili + 1);
             else
                 egitimBilgileri.DeletePos(secili + 1);
 
-            lEgitim.remove(secili);
+            egitimlerListesi.remove(secili);
         } else {
             System.out.println("Seçim yapmalısınız!");
         }
     }
 
-    public void EgitimBilgisiEkle() {
+    public void EgitimEkle() {
         Dialog<Egitim> dialog = new Dialog<>();
         ButtonType ekle = new ButtonType("Ekle", ButtonBar.ButtonData.OK_DONE);
         ButtonType iptal = new ButtonType("İptal", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -221,22 +221,22 @@ public class ElemanController implements Initializable {
         Optional<Egitim> sonuc = dialog.showAndWait();
 
         sonuc.ifPresent(e -> {
-            if (SistemdekiKisi != null) {
-                if (SistemdekiKisi.EgitimDurumu == null)
-                    SistemdekiKisi.EgitimDurumu = new LinkedList();
-                SistemdekiKisi.EgitimDurumu.InsertLast(e);
+            if (DKisi != null) {
+                if (DKisi.Egitim == null)
+                    DKisi.Egitim = new LinkedList();
+                DKisi.Egitim.InsertLast(e);
             } else {
                 egitimBilgileri.InsertLast(e);
             }
 
-            if (lEgitim != null)
-                lEgitim.add(e.Bitis + " : " + e.Okul_Ad +" - " + e.Tur + " - " + e.Bolum + " : " +
+            if (egitimlerListesi != null)
+                egitimlerListesi.add(e.Bitis + " : " + e.Okul_Ad +" - " + e.Tur + " - " + e.Bolum + " : " +
                             e.NotOrtalamasi);
             else
-                lEgitim = FXCollections.observableArrayList(e.Baslangic+" : " + e.Bitis + " : " +
+                egitimlerListesi = FXCollections.observableArrayList(e.Baslangic+" : " + e.Bitis + " : " +
                             e.Okul_Ad +" - " + e.Tur + " - " + e.Bolum + " : " + e.NotOrtalamasi);
 
-            egitimListesi.setItems(lEgitim);
+            egitimListesi.setItems(egitimlerListesi);
         });
     }
 
@@ -244,12 +244,12 @@ public class ElemanController implements Initializable {
         if (deneyimListesi.getSelectionModel().getSelectedIndex() != -1) {
             int secili = deneyimListesi.getSelectionModel().getSelectedIndex();
 
-            if (SistemdekiKisi != null)
-                SistemdekiKisi.Deneyimler.DeletePos(secili + 1);
+            if (DKisi != null)
+                DKisi.Deneyim.DeletePos(secili + 1);
             else
                 deneyimleri.DeletePos(secili + 1);
 
-            lDeneyimler.remove(secili);
+            deneyimlerListesi.remove(secili);
 
         } else {
            System.out.println("Seçim yapmalısınz");
@@ -307,21 +307,21 @@ public class ElemanController implements Initializable {
         Optional<Deneyim> sonuc = dialog.showAndWait();
 
         sonuc.ifPresent(d -> {
-            if (SistemdekiKisi != null) {
-                if (SistemdekiKisi.Deneyimler == null)
-                    SistemdekiKisi.Deneyimler = new LinkedList();
+            if (DKisi != null) {
+                if (DKisi.Deneyim == null)
+                    DKisi.Deneyim = new LinkedList();
 
-                SistemdekiKisi.Deneyimler.InsertLast(d);
+                DKisi.Deneyim.InsertLast(d);
             } else {
                 deneyimleri.InsertLast(d);
             }
 
-            if (lDeneyimler != null)
-                lDeneyimler.add(d.Deneyim + " - " +d.Adres + " - " + d.Tecrübe_Pozisyon +" - " +d.tecrübe);
+            if (deneyimlerListesi != null)
+                deneyimlerListesi.add(d.Deneyim + " - " +d.Adres + " - " + d.Tecrübe_Pozisyon +" - " +d.tecrübe);
             else
-                lDeneyimler = FXCollections.observableArrayList(d.Deneyim + " - " +d.Adres + " - " + d.Tecrübe_Pozisyon +" - " +d.tecrübe);
+                deneyimlerListesi = FXCollections.observableArrayList(d.Deneyim + " - " +d.Adres + " - " + d.Tecrübe_Pozisyon +" - " +d.tecrübe);
 
-            deneyimListesi.setItems(lDeneyimler);
+            deneyimListesi.setItems(deneyimlerListesi);
         });
     }
 

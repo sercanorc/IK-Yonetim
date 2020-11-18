@@ -1,7 +1,7 @@
 Sercan, Adres, Telefon, Eposta, 1997, YabanciDil, ehliyetBilgisi
 Ali Kaya, İstanbul, 5321234567, akaya@gmail.com, 1985, İngilizce,Fransızca, A2,B
-Mehmet Sağlam, Kocaeli, 5051234567, msaglam@hotmail.com, 1990,  , B
+Mehmet Sağlam, Kocaeli, 5051234567, msaglam@hotmail.com, 1990, Null, B
 Aslı Yel, Trabzon, 5421234567, ayel@yahoo.com, 1970, İngilizce,  
 Neriman Koç, Ankara, 5331234567, nkoca@ymail.com, 1988, Almanca, E
 Ahmet Sarı, Manisa, 5071234567, asari@gmail.com, 1989, Arapça,İngilizce,Almanca, B
-Selim Mert, İstanbul, 5061234567, smert@gmail.com, 1985,  , B
+Selim Mert, İstanbul, 5061234567, smert@gmail.com, 1985, Null, B

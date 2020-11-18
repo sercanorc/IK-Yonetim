@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ElemanController">
    <children>
-      <Button layoutX="826.0" layoutY="25.0" mnemonicParsing="false" onAction="#KarsilamaEkraninaDon" text="Geri Dön" />
+      <Button layoutX="826.0" layoutY="25.0" mnemonicParsing="false" onAction="#AnaSayfa" text="Geri Dön" />
       <TextField fx:id="ad" layoutX="138.0" layoutY="79.0" />
       <Label layoutX="59.0" layoutY="83.0" text="Ad : " />
       <Label layoutX="53.0" layoutY="140.0" text="Adres: " />
@@ -29,11 +29,11 @@
       <Label layoutX="670.0" layoutY="70.0" text="DENEYİMLER" />
       <Button layoutX="670.0" layoutY="347.0" mnemonicParsing="false" onAction="#DeneyimEkle" text="Deneyim Ekle" />
       <Button layoutX="791.0" layoutY="347.0" mnemonicParsing="false" onAction="#DeneyimSil" text="Deneyim Sil" />
-      <Button layoutX="745.0" layoutY="429.0" mnemonicParsing="false" onAction="#SistemeKaydet" prefHeight="73.0" prefWidth="125.0" text="Kaydet" />
+      <Button layoutX="745.0" layoutY="429.0" mnemonicParsing="false" onAction="#Kayit" prefHeight="73.0" prefWidth="125.0" text="Kaydet" />
       <ListView fx:id="egitimListesi" layoutX="393.0" layoutY="110.0" prefHeight="200.0" prefWidth="230.0" />
       <Label layoutX="393.0" layoutY="70.0" text="EĞİTİM GEÇMİŞİ" />
-      <Button layoutX="393.0" layoutY="347.0" mnemonicParsing="false" onAction="#EgitimBilgisiEkle" text="Eğitim Bilgisi Ekle" />
-      <Button layoutX="514.0" layoutY="347.0" mnemonicParsing="false" onAction="#EgitimBilgisiniSil" text="Eğitim Bilgisini Sil" />
+      <Button layoutX="393.0" layoutY="347.0" mnemonicParsing="false" onAction="#EgitimEkle" text="Eğitim Bilgisi Ekle" />
+      <Button layoutX="514.0" layoutY="347.0" mnemonicParsing="false" onAction="#EgitimSil" text="Eğitim Bilgisini Sil" />
       <Label layoutX="35.0" layoutY="384.0" text="Ehliyet Bilgisi :" />
       <TextField fx:id="ehliyetBilgisi" layoutX="138.0" layoutY="380.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="36.0" layoutY="302.0" text="Dogum Tarihi" />

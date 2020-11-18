@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @FXML
-    public static Stage pencere;
+    public static Stage windows;
 
     public static void main(String[] args) {
         launch(args);
@@ -17,17 +17,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        pencere = primaryStage;
-        Parent arayuz;
-        arayuz = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
+        windows = primaryStage;
+        Parent guı;
+        guı = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
 
-        pencere.setTitle("İnsan Kaynakları Bilgi Sistemi");
-        pencere.setScene(new Scene(arayuz,685,493));
-        pencere.show();
+        windows.setTitle("İK bilgi sistemi");
+        windows.setScene(new Scene(guı,685,493));
+        windows.show();
 
-        pencere.setOnCloseRequest(e -> {
+        windows.setOnCloseRequest(e -> {
             e.consume();
-            pencere.close();
+            windows.close();
         });
     }
 

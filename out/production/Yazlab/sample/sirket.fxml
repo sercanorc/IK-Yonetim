@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SirketController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SirketController">
    <children>
       <Label layoutX="14.0" layoutY="57.0" text="İş Yeri Adı: ">
          <opaqueInsets>
@@ -16,7 +16,7 @@
          </opaqueInsets>
       </Label>
       <TextField fx:id="isYeriAdi" layoutX="89.0" layoutY="53.0" prefHeight="25.0" prefWidth="162.0" />
-      <Button layoutX="169.0" layoutY="94.0" mnemonicParsing="false" onAction="#SistemeKaydet" prefHeight="25.0" prefWidth="82.0" text="Güncelle" />
+      <Button layoutX="169.0" layoutY="94.0" mnemonicParsing="false" onAction="#Kayit" prefHeight="25.0" prefWidth="82.0" text="Güncelle" />
       <Button fx:id="btnBasvuruListele" layoutX="293.0" layoutY="94.0" mnemonicParsing="false" onAction="#BasvurulariListele" text="Kişileri Listele" />
       <Label layoutX="313.0" layoutY="48.0" text="KİŞİLER">
          <font>
@@ -25,20 +25,16 @@
       </Label>
       <ListView fx:id="listBasvurular" layoutX="420.0" layoutY="66.0" prefHeight="349.0" prefWidth="330.0" />
       <Button id="btnAyrintilariGoster" layoutX="292.0" layoutY="148.0" mnemonicParsing="false" onAction="#AyrintilariGoster" prefHeight="48.0" prefWidth="105.0" text="Ayrıntıları Göster" />
-      <Button layoutX="148.0" layoutY="337.0" mnemonicParsing="false" onAction="#ingilizceBilenleriListele" text="İngilizce Bilenler" />
-      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#KarsilamaEkraninaDon" text="Geri Dön" />
+      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#AnaSayfa" text="Geri Dön" />
       <Label fx:id="lblSistemdekiSirket" layoutX="10.0" layoutY="10.0" text="Sistemdeki Şirket: " />
-      <Button layoutX="31.0" layoutY="337.0" mnemonicParsing="false" onAction="#lisansMezunlarıListele" text="Lisans Mezunları" />
       <Button layoutX="299.0" layoutY="222.0" mnemonicParsing="false" onAction="#dosyayaYazdır" text="Dosyaya Yaz" />
-      <Button id="btnPre" layoutX="636.0" layoutY="456.0" mnemonicParsing="false" onAction="#Preorder" text="Preorder" />
-      <Button id="btnPost" layoutX="551.0" layoutY="456.0" mnemonicParsing="false" onAction="#Postorder" text="Postorder" />
-      <Button id="btnIn" layoutX="482.0" layoutY="456.0" mnemonicParsing="false" onAction="#Inorder" text="Inorder" />
-      <Button id="btnDerinlikElemanSayisi" layoutX="531.0" layoutY="508.0" mnemonicParsing="false" onAction="#derinlikveElemanSayisi" text="Derinlik ve E. Sayısı" />
+      <Button id="btnPre" layoutX="631.0" layoutY="441.0" mnemonicParsing="false" onAction="#Preorder" text="Preorder" />
+      <Button id="btnPost" layoutX="546.0" layoutY="441.0" mnemonicParsing="false" onAction="#Postorder" text="Postorder" />
+      <Button id="btnIn" layoutX="477.0" layoutY="441.0" mnemonicParsing="false" onAction="#Inorder" text="Inorder" />
+      <Button id="btnDerinlikElemanSayisi" layoutX="526.0" layoutY="493.0" mnemonicParsing="false" onAction="#derinlikveElemanSayisi" text="Derinlik ve E. Sayısı" />
       <TextField fx:id="elemanİsim" layoutX="45.0" layoutY="148.0" prefHeight="25.0" prefWidth="205.0" promptText="ArancakKisi" />
-      <Button layoutX="127.0" layoutY="415.0" mnemonicParsing="false" onAction="#Ara" prefHeight="70.0" prefWidth="104.0" text="Ara" />
-      <TextField fx:id="deneyimSuresi" layoutX="45.0" layoutY="186.0" prefHeight="25.0" prefWidth="205.0" promptText="Minimum Deneyim" />
-      <TextField fx:id="elemanYas" layoutX="45.0" layoutY="231.0" prefHeight="25.0" prefWidth="205.0" promptText="Yas Degeri" />
-      <TextField fx:id="ehliyetTipi" layoutX="45.0" layoutY="272.0" prefHeight="25.0" prefWidth="205.0" promptText="Ehliyet Tipi" />
-      <Button layoutX="261.0" layoutY="337.0" mnemonicParsing="false" onAction="#deneyimsizKisiler" text="Deneyimsiz Kisiler" />
+      <Button layoutX="117.0" layoutY="307.0" mnemonicParsing="false" onAction="#Ara" prefHeight="70.0" prefWidth="104.0" text="Ara" />
+      <TextField fx:id="ehliyetTipi" layoutX="45.0" layoutY="196.0" prefHeight="25.0" prefWidth="205.0" promptText="Ehliyet Tipi" />
+      <TextField fx:id="dil" layoutX="45.0" layoutY="247.0" prefHeight="25.0" prefWidth="205.0" promptText="Dil bilgisi" />
    </children>
 </AnchorPane>

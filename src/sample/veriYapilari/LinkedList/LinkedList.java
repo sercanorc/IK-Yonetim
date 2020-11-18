@@ -2,11 +2,11 @@ package sample.veriYapilari.LinkedList;
 
 import sample.eleman.Deneyim;
 import sample.eleman.Egitim;
-import sample.eleman.EkBilgi;
+import sample.eleman.Bilgi;
 
 public class LinkedList extends LinkedListADT {
     @Override
-    public void InsertFirst(EkBilgi value) {
+    public void InsertFirst(Bilgi value) {
         LDugum temp = new LDugum(value);
 
         if (Top == null)
@@ -19,7 +19,7 @@ public class LinkedList extends LinkedListADT {
     }
 
     @Override
-    public void InsertLast(EkBilgi value) {
+    public void InsertLast(Bilgi value) {
         LDugum temp = new LDugum(value);
 
         if (Top == null)
@@ -34,7 +34,7 @@ public class LinkedList extends LinkedListADT {
     }
 
     @Override
-    public void addToPos(int pozisyon, EkBilgi value) {
+    public void addToPos(int pozisyon, Bilgi value) {
         LDugum temp = new LDugum(value);
 
         if (pozisyon > Boyut || pozisyon < 0) {

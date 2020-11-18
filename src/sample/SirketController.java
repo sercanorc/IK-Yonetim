@@ -2,6 +2,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import sample.eleman.Kisi;
 import sample.sirket.Sirket;
-import sample.veriYapilari.binarySearchTree.ikiliAramaAgaciDugum;
+import sample.veriYapilari.binarySearchTree.AramaAgaciDugum;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,14 +19,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.function.Predicate;
 
-    //Şirket kayıtt ve kontrollerinden sorumlu sınıf elemanların listelenmesi ve kontrolleri bu sınıf ile yönetilir
+//Şirket kayıtt ve kontrollerinden sorumlu sınıf elemanların listelenmesi ve kontrolleri bu sınıf ile yönetilir
 public class SirketController implements Initializable {
-    public static Hashtable Sirketler;
-    public static Sirket sistemdekiSirket;
-
-    private Parent arayuz;
-    private Sirket kaydedilecekSirket;
+    public static Hashtable SirketTablosu;
+    public static Sirket sirket;
+    ObservableList<Kisi> persons= FXCollections.observableArrayList();
+    FilteredList<String> filteredList;
+    public String ayrintilar = " ";
+    private Parent guı;
+    private Sirket yeniSirket;
 
     @FXML
     private TextField isYeriAdi;
@@ -36,51 +40,43 @@ public class SirketController implements Initializable {
     @FXML
     private TextField elemanİsim;
     @FXML
-    private TextField deneyimSuresi;
-    @FXML
-    private TextField elemanYas;
-    @FXML
     private TextField ehliyetTipi;
-    private ObservableList<String> bilgiListesi = FXCollections.observableArrayList();
-    public String ayrintilar = " ";
+    @FXML
+    private TextField dil;
 
-
-    @Override   //Sistemde şirket vara bilgilerini getirir
+    @Override   //Sistemde şirket varsa bilgilerini getirir
     public void initialize(URL location, ResourceBundle resources) {
-        if (sistemdekiSirket != null) {
-            isYeriAdi.setText(sistemdekiSirket.Ad);
-
-            lblSistemdekiSirket.setText("Sistemdeki Şirket: " + sistemdekiSirket.Ad );
+        if (sirket != null) {
+            isYeriAdi.setText(sirket.Ad);
+            lblSistemdekiSirket.setText("Sistemdeki Şirket: " + sirket.Ad );
         }
     }
 
-    public void KarsilamaEkraninaDon() throws Exception {
-        arayuz = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
-        Main.pencere.setTitle("İnsan Kaynakları Bilgi Sistemi");
-        Main.pencere.setScene(new Scene(arayuz));
-        System.out.println("Karşılama Ekranına Geri Dönüldü.");
-        if (sistemdekiSirket != null) {
-            sistemdekiSirket = null;
+    public void AnaSayfa() throws Exception {
+        guı = FXMLLoader.load(getClass().getResource("anaEkran.fxml"));
+        Main.windows.setScene(new Scene(guı));
+        if (sirket != null) {
+            sirket = null;
         }
     }
 
-    public void SistemeKaydet() throws Exception {
+    public void Kayit() throws Exception {
         if (!isYeriAdi.getText().isEmpty() ) {
-            if (sistemdekiSirket != null) {
-                kaydedilecekSirket = new Sirket(isYeriAdi.getText());
+            if (sirket != null) {
+                yeniSirket = new Sirket(isYeriAdi.getText());
 
-                Sirketler.remove(sistemdekiSirket.Ad);
-                Sirketler.put(kaydedilecekSirket.Ad, kaydedilecekSirket);
+                SirketTablosu.remove(sirket.Ad);
+                SirketTablosu.put(yeniSirket.Ad, yeniSirket);
             } else {
-                kaydedilecekSirket = new Sirket(isYeriAdi.getText());
-                if (Sirketler == null) {
-                    Sirketler = new Hashtable();
-                    Sirketler.put(kaydedilecekSirket.Ad, kaydedilecekSirket);
+                yeniSirket = new Sirket(isYeriAdi.getText());
+                if (SirketTablosu == null) {
+                    SirketTablosu = new Hashtable();
+                    SirketTablosu.put(yeniSirket.Ad, yeniSirket);
                 } else {
-                    Sirketler.put(kaydedilecekSirket.Ad, kaydedilecekSirket);
+                    SirketTablosu.put(yeniSirket.Ad, yeniSirket);
                 }
             }
-            KarsilamaEkraninaDon();
+            AnaSayfa();
         } else {
             System.out.println("Hata");
         }
@@ -95,7 +91,7 @@ public class SirketController implements Initializable {
     public void AyrintilariGoster() {
         if (listBasvurular.getSelectionModel().getSelectedItem() != null) {
             String[] kisiBilgileri = listBasvurular.getSelectionModel().getSelectedItem().toString().split(" \\| ");
-            ikiliAramaAgaciDugum secilen = ElemanController.Kisiler.kisiAra(kisiBilgileri[0]);
+            AramaAgaciDugum secilen = ElemanController.Kisiler.kisiAra(kisiBilgileri[0]);
 
             ayrintilar += "Ad-Soyad:\t\t\t" + secilen.kisi.Ad_Soyad + "\n" +
                     "Adres:\t\t\t" + secilen.kisi.Adres + "\n" +
@@ -107,10 +103,10 @@ public class SirketController implements Initializable {
 
 
 
-            if (secilen.Deneyimler != null)
-                ayrintilar += "\nDeneyimler;\n\n" + secilen.Deneyimler.listele() + "\n";
-            if (secilen.EgitimDurumu != null)
-                ayrintilar += "\nEğitim Bilgileri;\n\n" + secilen.EgitimDurumu.listele() + "\n";
+            if (secilen.Deneyim != null)
+                ayrintilar += "\nDeneyimler;\n\n" + secilen.Deneyim.listele() + "\n";
+            if (secilen.Egitim != null)
+                ayrintilar += "\nEğitim Bilgileri;\n\n" + secilen.Egitim.listele() + "\n";
             System.out.println("Ayrıntılı Bilgiler");
             System.out.println(ayrintilar);
         } else {
@@ -143,20 +139,20 @@ public class SirketController implements Initializable {
         listBasvurular.setItems(ElemanController.Kisiler.postorder());
     }
 
-    public void ingilizceBilenleriListele() {
-      //  listBasvurular.setItems(ElemanController.Kisiler.ingilizceBilenler());
-    }
-
-    public void lisansMezunlarıListele(){
-    }
-    public void deneyimsizKisiler() {
-    }
 
     public void Ara(){
         String ad= elemanİsim.getText();
-        System.out.println(ElemanController.Kisiler.kisiAra(ad).kisi.bilgileriGetir());
         String ehliyet=ehliyetTipi.getText();
-        System.out.println(ElemanController.Kisiler.ehliyetAra(ehliyet).kisi.bilgileriGetir());
+        String dilbilgisi= dil.getText();
+        if(!elemanİsim.getText().isEmpty()){
+            System.out.println(ElemanController.Kisiler.kisiAra(ad).kisi.bilgileriGetir());
+        }else if(!ehliyetTipi.getText().isEmpty()){
+            System.out.println(ElemanController.Kisiler.ehliyetAra(ehliyet).kisi.bilgileriGetir());
+        } else if(!dil.getText().isEmpty()){
+            System.out.println(ElemanController.Kisiler.dilAra(dilbilgisi).kisi.bilgileriGetir());
+        }else{
+            System.out.println("bos bırakmayın");
+        }
     }
 
     public void dosyayaYazdır(){

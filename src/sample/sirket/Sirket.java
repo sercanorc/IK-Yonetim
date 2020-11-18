@@ -1,6 +1,5 @@
 package sample.sirket;
 
-import sample.veriYapilari.binarySearchTree.IkiliAramaAgaci;
 //Şirket sınıfı içerisinde öbek veri yapısını kullanarak kişilerin bilgilerini tutmaktadır.
 //Constructor(kurucu) metodun içerisinde sınıftan nesne
 //yaratılırken otomatik olarak üretilmektedir.

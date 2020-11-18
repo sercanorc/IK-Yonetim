@@ -1,18 +1,8 @@
- Ad-Soyad:			zxc
-Adres:			zxc
-Telefon:			zxc
-Eposta:			acxc
-Dogum Tarihi:			1997
-YabanciDil:		ingilzice
-EhliyetBilgisi:		asds
-
-Deneyimler;
-
-asdsa - sad
-
-
-Eğitim Bilgileri;
-
-2018 - sd - asds - 70.0
-
+ Ad-Soyad:			Aslı Yel
+Adres:			Trabzon
+Telefon:			5421234567
+Eposta:			ayel@yahoo.com
+Dogum Tarihi:			1970
+YabanciDil:		İngilizce
+EhliyetBilgisi:		 
 

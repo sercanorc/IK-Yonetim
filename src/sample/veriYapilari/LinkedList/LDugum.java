@@ -1,14 +1,14 @@
 package sample.veriYapilari.LinkedList;
 
-import sample.eleman.EkBilgi;
+import sample.eleman.Bilgi;
 
 public class LDugum {
-    public EkBilgi Data;
+    public Bilgi Data;
     public LDugum Next;
 
     public LDugum() { }
 
-    public LDugum(EkBilgi data) {
+    public LDugum(Bilgi data) {
 
         this.Data = data;
     }
